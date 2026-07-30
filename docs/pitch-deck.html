@@ -123,7 +123,7 @@ button{ font-family:inherit; }
 .deck{ position:relative; height:100dvh; width:100%; display:flex; flex-direction:column; background:var(--bg); }
 
 .progress-rail{ position:relative; height:3px; width:100%; background:var(--border); flex:0 0 auto; }
-.progress-fill{ position:absolute; inset:0 auto 0 0; width:8.3333%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
+.progress-fill{ position:absolute; inset:0 auto 0 0; width:7.6923%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
 
 .chrome-top{
   flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
@@ -135,9 +135,9 @@ button{ font-family:inherit; }
 .chrome-top .counter{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-faint); letter-spacing:.06em; font-variant-numeric:tabular-nums; }
 
 .viewport{ position:relative; flex:1 1 auto; overflow:hidden; }
-.track{ display:flex; height:100%; width:1200%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
+.track{ display:flex; height:100%; width:1300%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
 .slide{
-  width:calc(100% / 12); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
+  width:calc(100% / 13); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
   padding:clamp(1.5rem,4vw,3.5rem) clamp(1.25rem,5vw,5rem) clamp(2rem,5vw,3.5rem);
   display:flex; flex-direction:column;
 }
@@ -439,7 +439,7 @@ button{ font-family:inherit; }
       <span class="brand-mark"></span>
       <span class="eyebrow">DevOps Incident Analysis Suite</span>
     </div>
-    <span class="counter" id="slideCounter">01 / 12</span>
+    <span class="counter" id="slideCounter">01 / 13</span>
   </div>
 
   <div class="viewport">
@@ -833,6 +833,36 @@ button{ font-family:inherit; }
         </div>
       </section>
 
+      <!-- SLIDE 13 — PHASE 03: CHAT MODEL, SECOND EXAMPLE -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">Phase 03 · Confluence Knowledge Chat</span><h2 class="slide-title">Any module. Same chat. Zero extra setup.</h2></div>
+          <div class="chat-row">
+            <div class="chat-mock">
+              <div class="chat-bubble user">Explain how authentication is implemented in the new PFAC module.</div>
+              <div class="chat-bubble ai">
+                PFAC doesn't run its own login flow — it reuses the platform's existing Clerk session. Every request carries the signed session JWT, which PFAC's middleware verifies before checking the caller's role and feature-access claims against the policy table. No new credentials, no separate identity store.
+                <div class="chat-sources">
+                  <span class="chat-source-chip">📄 PFAC Architecture Overview</span>
+                  <span class="chat-source-chip">📄 Platform Authentication Guide</span>
+                  <span class="chat-source-chip">📄 PFAC Access Policy Reference</span>
+                </div>
+              </div>
+              <div class="chat-typing"><span></span><span></span><span></span></div>
+            </div>
+            <div class="arch-zone">
+              <span class="arch-zone-title"><span class="dot"></span>Works On Day One</span>
+              <div class="rag-steps">
+                <div class="rag-step"><span class="rag-step-no">01</span><span>A new module ships its docs to Confluence like any other page — no chat re-training, no manual re-indexing.</span></div>
+                <div class="rag-step"><span class="rag-step-no">02</span><span>Incremental sync picks up the new pages on the next scheduled run.</span></div>
+                <div class="rag-step"><span class="rag-step-no">03</span><span>The next question about that module is already answerable.</span></div>
+              </div>
+              <p class="arch-note" style="margin-top:.3rem;">If PFAC's docs don't cover something, the chat says so — never a guess.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
@@ -845,7 +875,7 @@ button{ font-family:inherit; }
 
 <script>
 (function(){
-  var SLIDE_COUNT = 12;
+  var SLIDE_COUNT = 13;
   var index = 0;
   var track = document.getElementById('track');
   var progressFill = document.getElementById('progressFill');
