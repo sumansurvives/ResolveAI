@@ -123,7 +123,7 @@ button{ font-family:inherit; }
 .deck{ position:relative; height:100dvh; width:100%; display:flex; flex-direction:column; background:var(--bg); }
 
 .progress-rail{ position:relative; height:3px; width:100%; background:var(--border); flex:0 0 auto; }
-.progress-fill{ position:absolute; inset:0 auto 0 0; width:12.5%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
+.progress-fill{ position:absolute; inset:0 auto 0 0; width:8.3333%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
 
 .chrome-top{
   flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
@@ -135,9 +135,9 @@ button{ font-family:inherit; }
 .chrome-top .counter{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-faint); letter-spacing:.06em; font-variant-numeric:tabular-nums; }
 
 .viewport{ position:relative; flex:1 1 auto; overflow:hidden; }
-.track{ display:flex; height:100%; width:800%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
+.track{ display:flex; height:100%; width:1200%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
 .slide{
-  width:calc(100% / 8); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
+  width:calc(100% / 12); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
   padding:clamp(1.5rem,4vw,3.5rem) clamp(1.25rem,5vw,5rem) clamp(2rem,5vw,3.5rem);
   display:flex; flex-direction:column;
 }
@@ -373,6 +373,43 @@ button{ font-family:inherit; }
 .phase-desc{ color:var(--text-muted); font-size:.92rem; line-height:1.6; max-width:64ch; margin:0 0 .8rem; }
 .phase-tags{ display:flex; flex-wrap:wrap; gap:.4rem; }
 
+/* ---------- slide 9-11 : phase 02 deep dive ---------- */
+.pair-row{ display:grid; grid-template-columns:1fr 1fr; gap:.85rem; }
+.arch-zone-title.faint{ color:var(--text-faint); }
+.arch-zone-title.faint .dot{ background:var(--text-faint); }
+.verdict-row{ display:grid; grid-template-columns:1fr 1fr; gap:.85rem; }
+.verdict-card{ background:var(--surface-2); border:1px solid var(--border); border-radius:10px; padding:.95rem 1.1rem; display:flex; flex-direction:column; gap:.5rem; }
+.verdict-name{ font-family:var(--font-mono); font-size:.84rem; color:var(--text); font-weight:600; }
+.verdict-sub{ font-size:.78rem; color:var(--text-muted); line-height:1.45; }
+.verdict-pill{ align-self:flex-start; font-family:var(--font-mono); font-size:.66rem; text-transform:uppercase; letter-spacing:.06em; padding:.28rem .6rem; border-radius:999px; }
+.verdict-pill.ignore{ color:var(--text-faint); border:1px solid var(--border-strong); }
+.verdict-pill.investigate{ color:var(--critical); background:rgba(255,84,112,.12); border:1px solid rgba(255,84,112,.32); }
+.example-line{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-muted); background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:.6rem .85rem; }
+.example-line b{ color:var(--accent-2); font-weight:600; }
+.compare-strip{ display:flex; align-items:center; gap:.5rem .7rem; flex-wrap:wrap; }
+.compare-before{ font-family:var(--font-mono); font-size:.82rem; color:var(--text-faint); text-decoration:line-through; text-decoration-color:var(--border-strong); text-decoration-thickness:1px; }
+.compare-after-list{ display:flex; flex-wrap:wrap; gap:.4rem; }
+.future-strip{ display:flex; align-items:center; flex-wrap:wrap; gap:.6rem .5rem; padding-top:.2rem; }
+.future-strip .eyebrow{ margin-right:.3rem; }
+
+/* ---------- slide 12 : chat model ---------- */
+.chat-row{ display:grid; grid-template-columns:1.15fr .85fr; gap:1.5rem; flex:1; align-items:stretch; }
+.chat-mock{
+  background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.15rem 1.25rem;
+  display:flex; flex-direction:column; gap:.85rem; box-shadow:var(--shadow); justify-content:flex-end;
+}
+.chat-bubble{ max-width:90%; padding:.75rem .95rem; border-radius:12px; font-size:.86rem; line-height:1.6; }
+.chat-bubble.user{ align-self:flex-end; background:var(--accent); color:#fff; border-bottom-right-radius:3px; }
+.chat-bubble.ai{ align-self:flex-start; background:var(--surface-2); color:var(--text); border:1px solid var(--border); border-bottom-left-radius:3px; }
+.chat-sources{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.65rem; }
+.chat-source-chip{ font-family:var(--font-mono); font-size:.66rem; color:var(--accent-2); background:var(--accent-soft); border-radius:6px; padding:.32rem .55rem; }
+.chat-typing{ align-self:flex-start; display:flex; gap:.3rem; padding:.6rem .8rem; }
+.chat-typing span{ width:5px; height:5px; border-radius:50%; background:var(--text-faint); display:inline-block; }
+.rag-steps{ display:flex; flex-direction:column; gap:.5rem; }
+.rag-step{ display:flex; align-items:flex-start; gap:.65rem; font-size:.82rem; color:var(--text-muted); line-height:1.5; }
+.rag-step-no{ font-family:var(--font-mono); font-size:.68rem; color:var(--accent-2); background:var(--accent-soft); border-radius:6px; padding:.15rem .45rem; flex:0 0 auto; margin-top:.1rem; }
+.rag-step b{ color:var(--text); }
+
 @media (max-width: 760px){
   .problem-grid{ grid-template-columns:1fr; }
   .chaos{ min-height:340px; }
@@ -381,6 +418,9 @@ button{ font-family:inherit; }
   .chrome-top .counter{ display:none; }
   .arch-row{ grid-template-columns:1fr; }
   .arch-row.two{ grid-template-columns:1fr; }
+  .pair-row{ grid-template-columns:1fr; }
+  .verdict-row{ grid-template-columns:1fr; }
+  .chat-row{ grid-template-columns:1fr; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -399,7 +439,7 @@ button{ font-family:inherit; }
       <span class="brand-mark"></span>
       <span class="eyebrow">DevOps Incident Analysis Suite</span>
     </div>
-    <span class="counter" id="slideCounter">01 / 08</span>
+    <span class="counter" id="slideCounter">01 / 12</span>
   </div>
 
   <div class="viewport">
@@ -610,6 +650,189 @@ button{ font-family:inherit; }
         </div>
       </section>
 
+      <!-- SLIDE 9 — PHASE 02: ALWAYS-ON INGESTION -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">Phase 02 · Realtime Incident Insights</span><h2 class="slide-title">From manual upload to an always-on watch</h2></div>
+          <div class="arch-wrap">
+            <div class="pair-row">
+              <div class="arch-zone">
+                <span class="arch-zone-title faint"><span class="dot"></span>Today</span>
+                <div class="arch-flow">
+                  <span class="arch-node">Engineer</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Upload Log File</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Log Reader</span>
+                </div>
+                <p class="arch-note">Someone has to notice, export, and upload — after the fact.</p>
+              </div>
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Phase 02</span>
+                <div class="arch-flow">
+                  <span class="arch-node">Azure Sources</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Monitoring Agent</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Event Stream</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Log Reader</span>
+                </div>
+                <div class="chip-row">
+                  <span class="chip">App Insights</span><span class="chip">Azure Monitor</span><span class="chip">AKS Logs</span>
+                  <span class="chip">Log Analytics</span><span class="chip">Event Hub (optional)</span>
+                </div>
+                <p class="arch-note">Polled every 30 seconds — nobody has to notice first.</p>
+              </div>
+            </div>
+
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Dynamic Alert Engine — the model judges, not a threshold</span>
+                <p class="arch-note">Static rules can't know about an error that's never happened before. Every exception is judged on its own, in context.</p>
+                <div class="verdict-row">
+                  <div class="verdict-card">
+                    <span class="verdict-name">NullReferenceException</span>
+                    <span class="verdict-sub">Seen before. Expected behavior under known conditions.</span>
+                    <span class="verdict-pill ignore">Ignore</span>
+                  </div>
+                  <div class="verdict-card">
+                    <span class="verdict-name">OutOfMemoryException</span>
+                    <span class="verdict-sub">Never seen before. Occurred 17 times and climbing.</span>
+                    <span class="verdict-pill investigate">Investigate</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10 — PHASE 02: TWO NEW AGENTS -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">Phase 02 · Two New Agents</span><h2 class="slide-title">The pipeline gets eyes, and a memory</h2></div>
+          <div class="arch-wrap">
+            <div class="pair-row">
+              <div class="agent-card" style="min-height:auto;">
+                <span class="agent-idx">NEW AGENT · MONITORING</span>
+                <h3 class="agent-name">Monitoring</h3>
+                <p class="agent-role">Polls Azure Monitor, App Insights, and Log Analytics — watching for spikes and exception patterns nobody wrote a rule for.</p>
+                <div class="agent-io"><b>In</b> Azure telemetry &nbsp;→&nbsp; <b>Out</b> Incident candidate</div>
+                <div class="agent-tools">
+                  <span class="tool-chip">Poll every 30s</span><span class="tool-chip">Anomaly detection</span><span class="tool-chip">New patterns</span>
+                </div>
+              </div>
+              <div class="agent-card" style="min-height:auto;">
+                <span class="agent-idx">NEW AGENT · CORRELATION</span>
+                <h3 class="agent-name">Incident Correlation</h3>
+                <p class="agent-role">Checks whether this has happened before — same stack trace, API, service, customer, or deployment.</p>
+                <div class="agent-io"><b>In</b> Incident candidate &nbsp;→&nbsp; <b>Out</b> Correlation match</div>
+                <div class="agent-tools">
+                  <span class="tool-chip">Deployment history</span><span class="tool-chip">Stack trace match</span><span class="tool-chip">Prior incidents</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="example-line">→ <b>Looks identical to Incident #452</b> · occurred right after release 3.4.1 · same root cause</div>
+
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Revised Pipeline</span>
+                <div class="arch-flow">
+                  <span class="arch-node accent">Monitoring</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Anomaly Detection</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Log Reader</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Incident Correlation</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">RCA</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Remediation</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Cookbook</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Notification</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">ServiceNow / Jira / Slack / Teams</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11 — PHASE 02: ALERT TO ANSWER -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">Phase 02 · From Alert To Answer</span><h2 class="slide-title">Every alert already has a runbook — use it directly</h2></div>
+          <div class="arch-wrap">
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Alert → Runbook, not Alert → RAG</span>
+                <div class="arch-flow">
+                  <span class="arch-node">Alert Name</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Find Runbook</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Feed to AI</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Execute Investigation</span>
+                </div>
+                <div class="example-line">→ <b>High SQL DTU</b> · SQL Runbook · AI · Investigate</div>
+                <p class="arch-note">Faster and more accurate than a general search — the runbook is already known before the model reads a single log line.</p>
+              </div>
+            </div>
+
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Richer ServiceNow Tickets</span>
+                <div class="arch-flow" style="margin-bottom:.15rem;">
+                  <span class="arch-node">Azure Alert</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">AI Investigation</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Root Cause</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Recommendation</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">ServiceNow Ticket</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Engineer</span>
+                </div>
+                <div class="compare-strip">
+                  <span class="compare-before">"Error occurred."</span>
+                  <span class="val-arrow">→</span>
+                  <div class="compare-after-list">
+                    <span class="tool-chip">Root cause</span><span class="tool-chip">Confidence 91%</span><span class="tool-chip">Affected API</span>
+                    <span class="tool-chip">Suggested fix</span><span class="tool-chip">Relevant SOP</span><span class="tool-chip">Related incident</span>
+                    <span class="tool-chip">Rollback</span><span class="tool-chip">Evidence</span><span class="tool-chip">Recommended owner</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="future-strip">
+              <span class="eyebrow muted">Looking further ahead</span>
+              <span class="chip">Deployment Correlation Agent</span><span class="chip">Impact Analysis Agent</span>
+              <span class="chip">Duplicate Incident Suppression</span><span class="chip">Learning Agent</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12 — PHASE 03: CHAT MODEL -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">Phase 03 · Confluence Knowledge Chat</span><h2 class="slide-title">Any question. Every page. One plain-language answer.</h2></div>
+          <div class="chat-row">
+            <div class="chat-mock">
+              <div class="chat-bubble user">What's our rollback process for payment-gateway, and has this happened before?</div>
+              <div class="chat-bubble ai">
+                Drain traffic, revert to the last stable image tag, then validate through the health-check endpoint — documented in the Payment Services Runbook. This mirrors <b style="color:var(--text);">INC-0091</b>, resolved 2026-06-14 with the same steps.
+                <div class="chat-sources">
+                  <span class="chat-source-chip">📄 Payment Services Runbook</span>
+                  <span class="chat-source-chip">📄 Release Playbook</span>
+                  <span class="chat-source-chip">📄 Postmortem — INC-0091</span>
+                </div>
+              </div>
+              <div class="chat-typing"><span></span><span></span><span></span></div>
+            </div>
+            <div class="arch-zone">
+              <span class="arch-zone-title"><span class="dot"></span>Hybrid RAG</span>
+              <div class="rag-steps">
+                <div class="rag-step"><span class="rag-step-no">01</span><span><b>Keyword search</b> catches exact terms — ticket IDs, service names, config keys.</span></div>
+                <div class="rag-step"><span class="rag-step-no">02</span><span><b>Vector search</b> catches meaning — paraphrased questions, related concepts.</span></div>
+                <div class="rag-step"><span class="rag-step-no">03</span><span><b>Merge &amp; rerank</b> across both, deduplicated by source page.</span></div>
+                <div class="rag-step"><span class="rag-step-no">04</span><span><b>Synthesize</b> across every matching Confluence page into one answer.</span></div>
+              </div>
+              <p class="arch-note" style="margin-top:.3rem;">Same zero-hallucination guarantee as Remediation — every answer traces back to a page, section, and last-updated date.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
@@ -622,7 +845,7 @@ button{ font-family:inherit; }
 
 <script>
 (function(){
-  var SLIDE_COUNT = 8;
+  var SLIDE_COUNT = 12;
   var index = 0;
   var track = document.getElementById('track');
   var progressFill = document.getElementById('progressFill');
@@ -643,7 +866,7 @@ button{ font-family:inherit; }
   function render(){
     track.style.transform = 'translateX(-' + (index * (100/SLIDE_COUNT)) + '%)';
     progressFill.style.width = (((index+1)/SLIDE_COUNT)*100) + '%';
-    counter.textContent = String(index+1).padStart(2,'0') + ' / 0' + SLIDE_COUNT;
+    counter.textContent = String(index+1).padStart(2,'0') + ' / ' + String(SLIDE_COUNT).padStart(2,'0');
     var dots = dotsWrap.querySelectorAll('.dot');
     dots.forEach(function(el,i2){ el.classList.toggle('active', i2===index); });
     btnBack.disabled = index===0;
