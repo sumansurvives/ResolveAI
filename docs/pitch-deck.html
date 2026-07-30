@@ -123,7 +123,7 @@ button{ font-family:inherit; }
 .deck{ position:relative; height:100dvh; width:100%; display:flex; flex-direction:column; background:var(--bg); }
 
 .progress-rail{ position:relative; height:3px; width:100%; background:var(--border); flex:0 0 auto; }
-.progress-fill{ position:absolute; inset:0 auto 0 0; width:14.2857%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
+.progress-fill{ position:absolute; inset:0 auto 0 0; width:12.5%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .5s cubic-bezier(.65,0,.35,1); }
 
 .chrome-top{
   flex:0 0 auto; display:flex; align-items:center; justify-content:space-between;
@@ -135,9 +135,9 @@ button{ font-family:inherit; }
 .chrome-top .counter{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-faint); letter-spacing:.06em; font-variant-numeric:tabular-nums; }
 
 .viewport{ position:relative; flex:1 1 auto; overflow:hidden; }
-.track{ display:flex; height:100%; width:700%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
+.track{ display:flex; height:100%; width:800%; transition:transform .62s cubic-bezier(.65,0,.28,1); will-change:transform; }
 .slide{
-  width:calc(100% / 7); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
+  width:calc(100% / 8); height:100%; flex:0 0 auto; overflow-y:auto; overflow-x:hidden;
   padding:clamp(1.5rem,4vw,3.5rem) clamp(1.25rem,5vw,5rem) clamp(2rem,5vw,3.5rem);
   display:flex; flex-direction:column;
 }
@@ -219,7 +219,35 @@ button{ font-family:inherit; }
 .stat-big.alt{ color:var(--high); }
 .stat-label{ font-family:var(--font-mono); font-size:.76rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-top:.5rem; display:block; }
 
-/* ---------- slide 3 : agent lineup ---------- */
+/* ---------- slide 3 : architecture ---------- */
+.arch-wrap{ flex:1; display:flex; flex-direction:column; gap:.85rem; }
+.arch-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:.85rem; }
+.arch-row.two{ grid-template-columns:1.3fr 1fr; }
+.arch-zone{
+  background:var(--surface); border:1px solid var(--border); border-radius:12px;
+  padding:1rem 1.15rem; display:flex; flex-direction:column; gap:.6rem;
+}
+.arch-zone-title{
+  display:flex; align-items:center; gap:.45rem; font-family:var(--font-mono); font-size:.68rem;
+  text-transform:uppercase; letter-spacing:.08em; color:var(--accent-2);
+}
+.arch-zone-title .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); flex:0 0 auto; }
+.arch-note{ font-size:.78rem; color:var(--text-muted); line-height:1.5; margin:0; }
+.arch-flow{ display:flex; align-items:center; flex-wrap:wrap; gap:.35rem .1rem; }
+.arch-node{
+  font-family:var(--font-mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.02em;
+  padding:.45rem .7rem; border-radius:7px; border:1px solid var(--border-strong); background:var(--surface-2);
+  color:var(--text-muted); white-space:nowrap;
+}
+.arch-node.accent{ color:var(--accent-2); border-color:var(--accent-line); background:var(--accent-soft); }
+.arch-arrow{ color:var(--border-strong); font-size:.85rem; padding:0 .3rem; flex:0 0 auto; }
+.arch-io-row{ display:flex; align-items:baseline; gap:.5rem; font-size:.82rem; }
+.arch-io-row b{ font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.05em; color:var(--text-faint); flex:0 0 auto; }
+.arch-guarantees{ display:flex; flex-wrap:wrap; gap:1.5rem; padding-top:.15rem; }
+.guarantee{ display:flex; align-items:flex-start; gap:.5rem; font-size:.8rem; color:var(--text-muted); max-width:26ch; }
+.guarantee b{ color:var(--good); flex:0 0 auto; }
+
+/* ---------- slide 4 : agent lineup ---------- */
 .agent-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.1rem; flex:1; align-items:start; }
 .agent-card{
   position:relative; background:var(--surface); border:1px solid var(--border); border-radius:14px;
@@ -351,6 +379,8 @@ button{ font-family:inherit; }
   .branch-wrap{ grid-template-columns:1fr; }
   .step-compare{ gap:1.25rem; }
   .chrome-top .counter{ display:none; }
+  .arch-row{ grid-template-columns:1fr; }
+  .arch-row.two{ grid-template-columns:1fr; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -369,7 +399,7 @@ button{ font-family:inherit; }
       <span class="brand-mark"></span>
       <span class="eyebrow">DevOps Incident Analysis Suite</span>
     </div>
-    <span class="counter" id="slideCounter">01 / 07</span>
+    <span class="counter" id="slideCounter">01 / 08</span>
   </div>
 
   <div class="viewport">
@@ -404,7 +434,101 @@ button{ font-family:inherit; }
         </div>
       </section>
 
-      <!-- SLIDE 3 — AGENT LINEUP -->
+      <!-- SLIDE 3 — ARCHITECTURE -->
+      <section class="slide">
+        <div class="slide-inner">
+          <div class="slide-head"><span class="eyebrow">The Architecture</span><h2 class="slide-title">One request, six services, fully orchestrated</h2></div>
+          <div class="arch-wrap">
+
+            <div class="arch-row">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Users</span>
+                <div class="chip-row">
+                  <span class="chip">DevOps Engineer</span><span class="chip">SRE</span><span class="chip">Incident Manager</span>
+                  <span class="chip">Platform Engineer</span><span class="chip">Team Lead</span><span class="chip">Ops Team</span>
+                </div>
+              </div>
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Frontend · Next.js + Tailwind</span>
+                <div class="arch-flow">
+                  <span class="arch-node">Login</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Dashboard</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Upload Log</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Incident Details</span>
+                </div>
+                <p class="arch-note">Gated by Clerk — login, session, username.</p>
+              </div>
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Environment (.env) &amp; Config</span>
+                <p class="arch-note">Backend-only secrets — OpenRouter, Clerk, Confluence, Jira, Slack. Never sent to the frontend.</p>
+                <p class="arch-note">RAG parameters — chunk size, overlap, embedding model, Top K — all configurable.</p>
+              </div>
+            </div>
+
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Backend · FastAPI + LangGraph Orchestration</span>
+                <div class="arch-flow">
+                  <span class="arch-node accent">Log Reader</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">RCA</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Remediation</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Cookbook</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Decision</span>
+                </div>
+                <div class="branch-wrap" style="margin-top:.15rem;">
+                  <div class="branch">
+                    <span class="branch-label yes">Critical → automatic</span>
+                    <div class="arch-flow"><span class="arch-node">Jira</span><span class="arch-arrow">→</span><span class="arch-node">Slack</span></div>
+                  </div>
+                  <div class="branch">
+                    <span class="branch-label no">Non-critical → manual</span>
+                    <div class="arch-flow"><span class="arch-node">Create Jira Button</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-row" style="grid-template-columns:1fr;">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>RAG Pipeline · LangChain — feeds the Remediation Agent</span>
+                <div class="arch-flow">
+                  <span class="arch-node">Confluence + Local SOPs</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Load &amp; Normalize</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Chunk</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Embed (bge-small-en)</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">LanceDB</span><span class="arch-arrow">→</span>
+                  <span class="arch-node">Retrieve (Top K)</span><span class="arch-arrow">→</span>
+                  <span class="arch-node accent">Grounded Answer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-row two">
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>External Integrations</span>
+                <div class="arch-io-row"><b>Slack</b> Severity, root cause, fix, ticket link</div>
+                <div class="arch-io-row"><b>Jira</b> Summary, root cause, remediation, priority, labels</div>
+              </div>
+              <div class="arch-zone">
+                <span class="arch-zone-title"><span class="dot"></span>Observability &amp; Monitoring</span>
+                <div class="chip-row">
+                  <span class="chip">Agent execution logs</span><span class="chip">LLM traces</span><span class="chip">Error tracking</span>
+                  <span class="chip">Audit logs</span><span class="chip">Performance metrics</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-guarantees">
+              <div class="guarantee"><b>✓</b>No hallucination — grounded in org docs only</div>
+              <div class="guarantee"><b>✓</b>Explainable — confidence + evidence on every output</div>
+              <div class="guarantee"><b>✓</b>Traceable — log → RCA → fix → runbook → ticket</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 — AGENT LINEUP -->
       <section class="slide">
         <div class="slide-inner">
           <div class="slide-head"><span class="eyebrow">The Agent Lineup</span><h2 class="slide-title">Five specialists. Zero overlap.</h2></div>
@@ -412,7 +536,7 @@ button{ font-family:inherit; }
         </div>
       </section>
 
-      <!-- SLIDE 4 — CHOREOGRAPHY -->
+      <!-- SLIDE 5 — CHOREOGRAPHY -->
       <section class="slide">
         <div class="slide-inner">
           <div class="slide-head"><span class="eyebrow">The Choreography</span><h2 class="slide-title">How the agents talk to each other</h2></div>
@@ -433,7 +557,7 @@ button{ font-family:inherit; }
         </div>
       </section>
 
-      <!-- SLIDE 5 — EXECUTION WALKTHROUGH -->
+      <!-- SLIDE 6 — EXECUTION WALKTHROUGH -->
       <section class="slide">
         <div class="slide-inner">
           <div class="slide-head"><span class="eyebrow">Execution Walkthrough</span><h2 class="slide-title">One request, five agents, real time</h2></div>
@@ -452,7 +576,7 @@ button{ font-family:inherit; }
         </div>
       </section>
 
-      <!-- SLIDE 6 — IMPACT -->
+      <!-- SLIDE 7 — IMPACT -->
       <section class="slide">
         <div class="slide-inner">
           <div class="slide-head"><span class="eyebrow">The Impact</span><h2 class="slide-title">From tribal knowledge to a seven-second draft</h2></div>
@@ -478,7 +602,7 @@ button{ font-family:inherit; }
         </div>
       </section>
 
-      <!-- SLIDE 7 — ROADMAP -->
+      <!-- SLIDE 8 — ROADMAP -->
       <section class="slide">
         <div class="slide-inner">
           <div class="slide-head"><span class="eyebrow">What's Next</span><h2 class="slide-title">Three phases — from automated triage to a self-serve knowledge agent</h2></div>
@@ -498,7 +622,7 @@ button{ font-family:inherit; }
 
 <script>
 (function(){
-  var SLIDE_COUNT = 7;
+  var SLIDE_COUNT = 8;
   var index = 0;
   var track = document.getElementById('track');
   var progressFill = document.getElementById('progressFill');
